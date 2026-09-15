@@ -40,4 +40,26 @@ Class **C**       255         255         255          0
                 Network(24)    Hosts(8)
 
 
+# IPv4 Subnets masks
+
+**CIDR (Classless Inter-Domain Routing)**
+Created around 1993
+
+IP address, slash, number of subnet bits;
+
+**Contiguous seties of ones** - ones on the left, zeros on the right
+
+ Binary    Decimal
+00000000      0
+10000000     128
+11000000     192
+11100000     224
+11110000     240
+11111000     248
+11111100     252
+11111110     254
+11111111     255
+
+/20 - 255.255.240.0 - 11111111.11111111.11110000.00000000 - 20 Network, 12 Hosts
+
 
