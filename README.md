@@ -15,12 +15,12 @@
 ---
 ## Lectures
 
-**Lecture 1:** [OSI Reference Model, Options and Padding](./Lectures/Lecture%201-st.md)
-**Lecture 2:** [Network Communication, Wireless Networking, Ethernet Standards](./Lectures/Lecture%202.md)
-**Lecture 3:** [Fiber Connectors, Copper Connectors, Network Topologies](./Lectures/Lecture%203.md)
-**Lecture 4:** [Network Architectures, Binary Math](./Lectures/Lecture%204.md)
-**Lecture 5:** [IPv4 Addressing, Clasful Subnetting, IPv4 Subnets masks](./Lectures/Lecture%205.md)
-**Lecture 6:** [Calculating IPv4, subnets and hosts, Magic Number Subnetting](./Lectures/Lecture%206.md)
+- [x] **Lecture 1:** [OSI Reference Model, Options and Padding](./Lectures/Lecture%201-st.md)
+- [x] **Lecture 2:** [Network Communication, Wireless Networking, Ethernet Standards](./Lectures/Lecture%202.md)
+- [x] **Lecture 3:** [Fiber Connectors, Copper Connectors, Network Topologies](./Lectures/Lecture%203.md)
+- [x] **Lecture 4:** [Network Architectures, Binary Math](./Lectures/Lecture%204.md)
+- [x] **Lecture 5:** [IPv4 Addressing, Clasful Subnetting, IPv4 Subnets masks](./Lectures/Lecture%205.md)
+- [x] **Lecture 6:** [Calculating IPv4, subnets and hosts, Magic Number Subnetting](./Lectures/Lecture%206.md)
 
 ---
 ## Lab Environment & Tooling
