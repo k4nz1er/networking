@@ -70,3 +70,5 @@ The standard IPv4 header has a minimum size of **20 bytes** (without options) an
 	* **IDS/IPS Evasion**: Crafting deliberately fragmented packets to bypass signature inspection on stateful firewalls.
 * **Source Routing Risks:**
 	* The `Strict Source Routing` and `Loose Source Routing` options allow the sender to predetermine the hop path, which can bypass network boundary, filters. For this reason, modern routers drop packets containing source routing options.
+- - -
+source: **Computer networks, 4 global edition, A. Tanenbaum**
