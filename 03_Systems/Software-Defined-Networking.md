@@ -23,6 +23,7 @@ Traditional network appliances (routers, firewalls, switches) integrate all func
                               |  (Southbound APIs - e.g., OpenFlow)
 +--------------------------------------------------------------------+
 |      Data / Infrastructure Plane (Hardware Interfaces, ASICs)      |
++--------------------------------------------------------------------+
 ```
 
  
