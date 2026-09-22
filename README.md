@@ -3,14 +3,14 @@
 ---
 ## Navigation
 
-| Direction                         | Description                                                                     |
-| :-------------------------------- | ------------------------------------------------------------------------------- |
-| [Lectures](./Lectures)            | Course Lecture notes (Network+)                                                 |
-| [01_Cheatsheets](01_Cheatsheets/) | Quick reference sheets, Wireshark display filters, BPF, syntax, CLI one-liners  |
-| [02_Protocols](./02_Protocols)    | Atomic protocols notes (DNS, ARP, SMB, DHCP, TLS) and associated security risks |
-| [03_Systems](./03_Systems)        | Linux & Windows networking internals, routing tables, sockets and firewalls     |
-| [04_Toolbox](./04_Toolbox)        | Practical CLI tooling                                                           |
-| [05_Labs](./05_Labs)              | Lab walkthroughs, PCAP traffic analysis and challenge writeups                  |
+| Direction             | Description                                                                     |
+| :-------------------- | ------------------------------------------------------------------------------- |
+| **`Lectures/`**       | Course Lecture notes (Network+)                                                 |
+| **`01_Cheatsheets/`** | Quick reference sheets, Wireshark display filters, BPF, syntax, CLI one-liners  |
+| **`02_Protocols/`**   | Atomic protocols notes (DNS, ARP, SMB, DHCP, TLS) and associated security risks |
+| **`03_Systems/`**     | Linux & Windows networking internals, routing tables, sockets and firewalls     |
+| **`04_Toolbox/`**     | Practical CLI tooling                                                           |
+| **`05_Labs/`**        | Lab walkthroughs, PCAP traffic analysis and challenge writeups                  |
 
 ---
 ## Lectures
