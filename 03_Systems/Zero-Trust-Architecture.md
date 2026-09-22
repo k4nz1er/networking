@@ -50,6 +50,6 @@ Rather than forcing all remote worker traffic through an internal headquarters b
 
 ## Related Notes
 
-Network transport: `[[Software-Defined-Networking]]`, `[[Virtual-Extensible-LAN]]`
+Network transport: [[Software-Defined-Networking]], [[Virtual-Extensible-LAN]]
 
-Identity & Directory Services: `[[LDAP]]`, `[[Kerberos]]`
+Identity & Directory Services: [[LDAP]], [[Kerberos]]
