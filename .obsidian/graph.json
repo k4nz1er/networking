@@ -5,8 +5,37 @@
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
-  "collapse-color-groups": true,
-  "colorGroups": [],
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:Lectures  ",
+      "color": {
+        "a": 1,
+        "rgb": 12669664
+      }
+    },
+    {
+      "query": "path:02_Protocols  ",
+      "color": {
+        "a": 1,
+        "rgb": 4577064
+      }
+    },
+    {
+      "query": "path:03_Systems  ",
+      "color": {
+        "a": 1,
+        "rgb": 3230900
+      }
+    },
+    {
+      "query": "path:01_Cheatsheets  ",
+      "color": {
+        "a": 1,
+        "rgb": 12749588
+      }
+    }
+  ],
   "collapse-display": true,
   "showArrow": false,
   "textFadeMultiplier": 0,
@@ -18,5 +47,5 @@
   "linkStrength": 1,
   "linkDistance": 250,
   "scale": 0.7653151973604684,
-  "close": false
+  "close": true
 }
