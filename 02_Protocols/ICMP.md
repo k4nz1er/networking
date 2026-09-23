@@ -1,7 +1,10 @@
 - - -
 protocol: ICMP
+
 layer: 3 (Network)
+
 RFC 792
+
 source: "Andrew S. Tanenbaum, Computer Networks (4th Edition), pp. 515-516"
 - - -
 # ICMP (Internet Control Message Protocol)
