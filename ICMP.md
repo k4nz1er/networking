@@ -47,7 +47,19 @@ Every ICMP message starts with a mandatory 4-byte header followed by content spe
 | 13/14 |  0   |   Timestamp Request / Reply   | Request/Response containing millisecond timestamps                        | Latency measurements and clock synchronization testing                       |
 - - -
 
+## Cybersecurity implications
 
+* **Network Reconnaissance & Host Discovery:**
+	* Threat actors use `Echo Request` (Type 8), `Timestamp` (Type 13) and `Address Mask Request` (Type 17) to enumerate live hosts across subnets.
+	* Dropping incoming Type 8 messages at network boundaries conceals hosts from trivial discovery scans.
+* **Traceroute Mechanics & Internsl Topology Leaks:**
+	* Classic UDP/ICMP `traceroute` deliberately generates TTL values starting at `1`, sequentially triggering ICMP `Time Exceeded` (Type 11) replies from intermediate routers to map internal transit hops.
+* **ICMP Tunneling & Data Exfiltration:**
+	* Because ICMP `Echo Request/Reply` permits arbitrary payload padding after the 4-byte header, tools such as `iodine`, `ptunnel` or `Hans` can encapsulate arbitrary TCP/IP or C2 traffic inside Echo payloads to bypass perimeter firewalls that do not inspect packet contents.
+* **ICMP Redirect Attacks (MITM):**
+	* Attackers on the same local segment forge ICMP `Redirect` (Type 5) frames to convince a victim host to route its traffic through an attacker-controlled machine rather than the default gateway.
+* **Black Hole Connections (Broken PMTUD):**
+	* Firewalls that blindly drop all ICMP Type 3 Code 4 packets prevent PMTUD from operatin, causing TCP handshakes to succeed while larger HTTP/TLS data packets hang and drop indefinitely.
 
 - - -
 More about ICMP: www.iana.org/assignments/icmp-parameters
