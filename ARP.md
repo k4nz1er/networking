@@ -59,6 +59,19 @@ Resolution Workflow
 3. **Unicast Reply:** only Host 2 responds directly to Host 1's MAC address with an ARP Reply: "I have `192.31.65.5`, my MAC is `E2`"
 4. **Inter-Network Delivery:** routers do not forward Layer 2 broadcasts. If the destination is outside the local subnet, the host consults its routing table and sends an ARP query for the **default gateway's** IP address, encapsulating the outer frame with the router's ingress MAC
 
+**Optimization & Efficiency Methods**
+* **ARP Cache:** operating systems maintain a volatile cache mapping IP addresses to MAC entries to prevent repeated broadcasts. Entries expire after a configurable timer (typically a few minutes)  to accommodate hardware NIC swaps.
+* **Bi-directional Caching:** when a target receives an ARP Request, it automatically records the sender's IP-to-MAC mapping into its own local cache, eliminating the need to issue a reverse broadcast when replying.
+* **Gratuitous ARP (GARP):** during interface initilization, a machine issues an ARP broadcast requesting its own IP address. If another host answers, an IP conflict is flagged; otherwise, other nodes refresh their caches with the new hardware binding.
+* **Proxy ARP:** a legacy router mechanism where an intermediary answers ARP requests on behalf of remote subnets, deceiving the client into sending all foreign traffic directly to the router's local MAC.
+- - -
 
+## Cybersecurity Implications
+
+|       Offensive Technique       | Mechanism                                                                                                                                          | Deffensive                                                                                                                |
+| :-----------------------------: | -------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **ARP Spoofing /<br>Poisoning** | ARP is stateless and lacks authentication. An attacker sends unsolicited, forged ARP replies associating the gateway's IP with the attacker's MAC. | **Dynamic ARP Inspection (DAI)** on managed switches, correlating ARP traffic against the DHCP snooping binding database. |
+|  **Man-in-the-Middle (MITM)**   | By poisoning both the gateway and the victim host simultaneously, all inbound and outbound transit passes through the attacker's NIC.              | Static ARP entries for critical infrastructure: 802.1X port security.                                                     |
+|   **Denial of Service (DoS)**   | Associating a dead or non-existent MAC address with a server's IP address blackholes network traffic.                                              | Switch port security imiting maximum MAC addresses per physical port.                                                     |
 
 - - -
