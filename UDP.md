@@ -70,3 +70,11 @@ Designed for multimedia streaming, VoIP and video conferencing running in user s
 * **RTCP (Control Protocol):** periodically exchanges diagnostic telemetry (packet loss rates, jitter buffers, transmission delay) to help encoders dynamically adjust video/audio bitrates to fit bandwidth limitations.
 - - -
 
+## Cybersecurity Implications
+
+|      Offensive Technique       | Mechanism                                                                                                                                                                                                                                   | Deffensive                                                                                                   |
+| :----------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+|  **DDoS (UDP Amplification)**  | UPD addresses are stateless and easily spoofed. Attackers forge victim IP addresses when requesting small payloads from public reflectrors ([[DNS]], [[NTP]], [[SNMP]]), causing massive amplified response streams directed at the target. | BCP 38 ingress source filtering; rate-limiting; disabling unused UDP services.                               |
+|     **UDP Port Scanning**      | Scanner emits empty UDP probes to target ports. Open ports usually return nothinng (or an application reply), while closed ports return `ICMP Port Unreachable` (Type 3, Code 3).                                                           | Ingress firewalls dropping incoming unknown UDP traffic; host-based rate-limiting on ICMP unreachables.      |
+| **Data Exfiltration over UDP** | Bypasses stateful TCP connection monitors by fragmenting or tunneling data through allowed UDP ports (e.g. DNS port 53, NTP port 123, VXLAN port 4789).                                                                                     | Next-Generation Firewall (NGFW) deep packet inspection (DPI) verifying true application protocol compliance. |
+- - -
