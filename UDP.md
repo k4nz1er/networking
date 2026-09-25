@@ -18,7 +18,7 @@ is a minimal, connectionless Layer 4 transport protocol defined in **RFC 768**. 
 
 - - -
 
-# UDP Datagram Header Layout
+## UDP Datagram Header Layout
 
 The UDP header is fixed-size and takes exactly **8 bytes** (64 bits), followed immediately by the application payload.
 
@@ -40,3 +40,33 @@ field breakdown:
 | **Destination Port** | 16 bits | Demultiplexing endpoint identifier on the receiving host. Bound to a local operating system socket (via `bind()` system call).                                                                               |
 |      **Length**      | 16 bits | Total datagram size in bytes (8-byte header + application payload). Minimum value is `8` (datagram with 0 bytes of payload). Maximum theoretical length is 65,535 bytes (bonded by IPv4 Total Length limit). |
 |     **Checksum**     | 16 bits | Optional in IPv4: mandatory in IPv6. 1's complement sum covering a 12-byte Pseudo-Header (derived from the IPv4 header), the UDP header and the payload. If unused, the sender injects all zeros (`0x0000`). |
+- - -
+
+## What UDP does NOT do (By Design)
+
+* **No connection estabilshment:** no handshakes (e.g., unlike **TCP** SYN/ACK); datagrams are transmitted immediately upon application request.
+* **No flow or congestion control:** transmitters push packets onto the wire regardless of intermediate router buffer saturation or receiver queue drops.
+* **No in-order sequencing:** packets traversing varied network paths may arrive out-of-order; UDP presents no sequence numbers to reorder them.
+* **No automatic retransmission:** corrupted or dropped datagrams are silently discarded. Reliability, timeout handling and flow-control algorithms must be explicitly managed by user-space applications if needed.
+
+- - -
+
+## Practical implementations & higher-layer paradigms
+
+Because UDP introduces almost no overhead, it is used in environments prioritizing low latency over absolute reliability:
+
+**A. Request-Reply & Client-Server rotocols
+* Protocols such as [[DNS]] and [[DNCP]] execute short transactions. A client sends a single request and awaits a single answer. If a response times out, the application simply retransmits the query, saving round-trip handshakes.
+
+**B. RPC (Remote Procedure Call)
+* Formulated by Birrell and Nelson (1984) to make network requests look like standard local function calls.
+* Relies on **Client Stubs** (marshaling arguments into UDP packets) and **Server Stubs** (demarshaling and invoking server processes).
+* Requires careful handling for non-idempotent operations (operations where re-executing a dropped request causes state corruption, such as banking balance updates).
+
+**C. Real-Time Transport Protocol (RTP) & RTCP (RFC 1889)**
+
+Designed for multimedia streaming, VoIP and video conferencing running in user space over UDP:
+* **RTP (Data Transport):** multiplexes streams into UDP packets, appending timestamps (to counter network jitter) and sequence numbers (to detect dropped packets without pausing for retransmissions).
+* **RTCP (Control Protocol):** periodically exchanges diagnostic telemetry (packet loss rates, jitter buffers, transmission delay) to help encoders dynamically adjust video/audio bitrates to fit bandwidth limitations.
+- - -
+
