@@ -55,10 +55,10 @@ field breakdown:
 
 Because UDP introduces almost no overhead, it is used in environments prioritizing low latency over absolute reliability:
 
-**A. Request-Reply & Client-Server rotocols
+**A. Request-Reply & Client-Server rotocols**
 * Protocols such as [[DNS]] and [[DNCP]] execute short transactions. A client sends a single request and awaits a single answer. If a response times out, the application simply retransmits the query, saving round-trip handshakes.
 
-**B. RPC (Remote Procedure Call)
+**B. RPC (Remote Procedure Call)**
 * Formulated by Birrell and Nelson (1984) to make network requests look like standard local function calls.
 * Relies on **Client Stubs** (marshaling arguments into UDP packets) and **Server Stubs** (demarshaling and invoking server processes).
 * Requires careful handling for non-idempotent operations (operations where re-executing a dropped request causes state corruption, such as banking balance updates).
